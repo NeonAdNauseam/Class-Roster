@@ -1,0 +1,16 @@
+/* Styling */
+
+/* Tempoarary Layout. Replace with your own */
+
+main.roster {
+    /* 3 column grid */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem 0;
+}
+
+figure img {
+    /*  */
+    width: 100%;
+}
