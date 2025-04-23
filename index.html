@@ -16,22 +16,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <!-- My Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- My Scripts -->
-    <script defer src="js/scripts.js"></script>
+
+
 
 </head>
 <body>
+    <main></main>
+    <section id="info-panel">
+      <figure>
+        <picture id="info-picture">
+          <img id="info-img" src="" alt="Character Portrait">
+        </picture>
+        <figcaption>
+          <h1 id="info-name">Hover over a fighter</h1>
+          <p id="info-quote" class="quote"></p>
+          <p id="info-superpower" class="superpower"></p>
+        </figcaption>
+      </figure>
+    </section>
+    
+    <div id="embers"></div>
 
-    <main class="roster">
-
-        <!-- Static Template
-        <figure>
-           <figcaption>Student Name</figcaption>
-           <img src="https://assets.codepen.io/16425/image-placeholder.png" alt="Student Name">
-        </figure>
-        -->
-        
-        </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="scripts.js" defer></script>
+  
     
 </body>
 </html>
