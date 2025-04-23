@@ -1,14 +1,21 @@
 /* ========== 1. GLOBAL LAYOUT ========== */
+/* GLOBAL FONT FAMILY */
 body {
   background: #2f2f2f;
   color: #fff;
-  font-family: sans-serif;
+  font-family: 'Nunito', sans-serif; /* 👈 use Nunito globally */
   margin: 0;
   padding: 2em 1em;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   gap: 2em;
+}
+
+/* HEADINGS: use Paquito */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bespoke Stencil', sans-serif;
+  font-weight: 400;
 }
 
 body::before {
@@ -33,6 +40,7 @@ main {
   min-width: 300px;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   max-width: min(100%, calc(5 * 100px + 4 * 1em));
+  max-height: 100%;
   margin-inline: auto;
 }
 
@@ -134,12 +142,11 @@ main {
 
 
 
-
-
 #info-panel {
-  flex: 1 1 30em;
-  width: 20em;
-  max-height: auto;
+  flex: 1 1 30em;     /* ✅ restores grow/shrink logic */
+  width: 30em;        /* ✅ gives a minimum visible width */
+  max-width: 100%;
+  height: 40em;
   background: #1a1a1a;
   border-radius: 1rem;
   overflow: hidden;
@@ -147,37 +154,51 @@ main {
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  padding: 0; /* still important! */
 }
+
 
 .bio-card {
   display: flex;
-  flex-direction: row;
+  flex: 1;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
   overflow: hidden;
 }
 
 .bio-media {
-  flex: 0 0 40%;
-  background: #333;
+  flex: 0 0 auto;           /* Let it size based on content or fallback width */
+  width: 40%;              /* 🔥 Bring back width control */
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-
+  justify-content: flex-start;
+  align-items: stretch;
+  background: red;         /* for testing */
+  padding: 0;
+  margin: 0;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
 
 
 .bio-media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-
+  margin: 0;
+  padding: 0;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
+
+
+
+
+
+
 
 
 .bio-caption {
