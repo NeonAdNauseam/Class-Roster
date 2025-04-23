@@ -1,4 +1,22 @@
-/* ========== 1. GLOBAL LAYOUT ========== */
+.layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  flex-wrap: wrap;
+
+  /* 🔥 Optional shrinking via transform */
+  transform: scale(0.95);
+  transform-origin: center;
+
+  /* ✅ Make it take full space but not clip content */
+  width: 100%;
+
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* GLOBAL FONT FAMILY */
 body {
   background: #2f2f2f;
