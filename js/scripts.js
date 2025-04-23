@@ -1,59 +1,75 @@
-const dataSource = 'https://assets.codepen.io/16425/web-3-spring-2024-roster.json';
+const dataSource = 'https://assets.codepen.io/16425/Spring-2025-Roster.json';
 const gallery = document.querySelector('main');
 const infoPanel = document.getElementById('info-panel');
 
-// Updated query selectors for semantic panel
+// Updated DOM references
 const infoImg = document.getElementById('info-img');
 const infoName = document.getElementById('info-name');
 const infoQuote = document.getElementById('info-quote');
-const infoSuper = document.getElementById('info-superpower');
+const infoTalent = document.getElementById('info-talent');
+const infoFunFact = document.getElementById('info-funfact');
+const infoTeam = document.getElementById('info-team');
+const infoColor = document.getElementById('info-color');
+const infoSimpsons = document.getElementById('info-simpsons');
+const infoBand = document.getElementById('info-band');
+const infoFood = document.getElementById('info-food');
+const infoSong = document.getElementById('info-song');
 
 fetch(dataSource)
   .then(response => response.json())
   .then(students => {
     students.forEach(student => {
       // Create a character card template
-      const template = `
-        <div class="character-wrapper" style="--accent-color: ${student.Color};">
-          <div class="character" style="background:${student.Color};">
-            <div class="card-image">
-              <img src="${student.Image}" alt="${student.Name}" />
-            </div>
-          </div>
-        </div>
-      `;
+const template = `
+  <div class="character-wrapper" style="--accent-color:${student.favoriteColor};">
+    <div class="character" style="background:${student.favoriteColor};">
+      <div class="card-image">
+        <img src="${student.imageUrl}" alt="${student.name}" />
+      </div>
+    </div>
+  </div>
+`;
+
 
       // Insert into DOM
       gallery.insertAdjacentHTML('beforeend', template);
 
       const newCard = gallery.lastElementChild;
 
-      // Update info panel content
       const updateInfoPanel = () => {
-        // Re-trigger panel animation
         infoPanel.classList.remove('active');
-        void infoPanel.offsetWidth;
+        void infoPanel.offsetWidth; // force reflow
         infoPanel.classList.add('active');
 
-        // Populate semantic content
-        infoImg.src = student.Image;
-        infoImg.alt = `${student.Name}'s portrait`;
-        infoName.textContent = `${student.Emoji} ${student.Name}`;
-        infoQuote.textContent = `"${student.Quote}"`;
-        infoSuper.textContent = `Superpower: ${student.Superpower}`;
+        infoImg.src = student.imageUrl;
+        infoImg.alt = `${student.name}'s portrait`;
+        infoName.textContent = `${student.status} ${student.name}`;
+        infoQuote.textContent = student.motto || "No quote.";
+        infoTalent.textContent = `${student.talent || "Unknown"}`;
+        infoFunFact.textContent = student.funFact || "No fun fact.";
+        infoTeam.textContent = student.team || "No team.";
+        infoColor.textContent = student.favoriteColor || "N/A";
+        infoSimpsons.textContent = student.favoriteSimpsonsCharacter || "N/A";
+        infoBand.textContent = student.favoriteBand || "N/A";
+        infoFood.textContent = student.favoriteFood || "N/A";
+        infoSong.textContent = student.favoriteSong || "N/A";
 
-        // Visually mark selected card
         document.querySelectorAll('.character-wrapper').forEach(card => {
           card.classList.remove('selected');
         });
         newCard.classList.add('selected');
       };
 
-      // Trigger on hover (desktop) and click (mobile)
       newCard.addEventListener('mouseenter', updateInfoPanel);
       newCard.addEventListener('click', updateInfoPanel);
     });
   });
+
+
+
+
+
+
 
 const emberContainer = document.getElementById('embers');
 
@@ -118,6 +134,6 @@ document.addEventListener('visibilitychange', () => {
 // Steady stream of embers
 setInterval(() => {
   if (!emberActive) return; // 💡 Prevent ember creation when inactive
-  for (let i = 0; i < 2; i++) createEmber();
+  for (let i = 0; i < 3; i++) createEmber();
 }, 100);
 
