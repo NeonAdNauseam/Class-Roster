@@ -118,6 +118,6 @@ document.addEventListener('visibilitychange', () => {
 // Steady stream of embers
 setInterval(() => {
   if (!emberActive) return; // 💡 Prevent ember creation when inactive
-  for (let i = 0; i < 3; i++) createEmber();
+  for (let i = 0; i < 2; i++) createEmber();
 }, 100);
 
